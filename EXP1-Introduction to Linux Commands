@@ -1,0 +1,163 @@
+Exercise 1:
+(a) Create a new directory named project in your home directory.
+(b) Inside the project directory, create two subdirectories: src and bin.
+(c) Create a new file named main.cpp inside the src directory and a file named
+compile.sh inside the bin directory.
+(d) Copy compile.sh to the src directory and rename the copy to build.sh.
+(e) Move main.cpp from the src directory to the bin directory.
+(f) Remove the src directory.
+(g) Use pwd to confirm you are in your home directory and list the contents of the
+project directory.
+
+Solution:-  
+# a)
+mkdir ~/project
+
+# b)
+cd ~/project
+mkdir src bin
+
+# c)
+touch src/main.cpp
+touch bin/compile.sh
+
+# d)
+cp bin/compile.sh src/build.sh
+
+# e)
+mv src/main.cpp bin/
+
+# f)
+rm -r src
+
+# g)
+pwd
+ls ~/project
+
+
+Exercise 2:
+(a) In your home directory, create a file named data.txt with some sample content.
+(b) Create another file named backup.txt by copying data.txt.
+(c) Use head and tail commands to display the 11th to 20th lines of data.txt.
+(d) Rename backup.txt to data backup.txt.
+(e) Change the permissions of data.txt to be read and writable only by the owner.
+(f) Change the ownership of data backup.txt to a user named student and a group
+named group1.
+
+solution:- 
+# a)
+echo "Sample content for data.txt" > ~/data.txt
+
+# b)
+cp ~/data.txt ~/backup.txt
+
+# c)
+head -n 20 ~/data.txt | tail -n 10
+
+# d)
+mv ~/backup.txt ~/data\ backup.txt
+
+# e)
+chmod 600 ~/data.txt
+
+# f)
+chown student:group1 ~/data\ backup.txt
+
+Exercise 3:
+(a) In your home directory, create a file named original file.txt and add some content
+to it.
+(b) Create a symbolic link named symlink to original that points to original file.txt.
+(c) Create a hard link named hardlink to original that also points to original file.txt.
+(d) Use ls -li to display the inode numbers of original file.txt, symlink to original, and
+hardlink to original. Observe and explain the differences in their inode numbers.
+(e) Edit original file.txt and add a new line of content.
+(f) Display the contents of symlink to original and hardlink to original to verify that
+the changes made to original file.txt are reflected in both links.
+(g) Delete original file.txt and verify the existence of symlink to original and hardlink to original.
+Explain the outcome based on the nature of symbolic and hard links
+
+solution :-
+# a)
+echo "Sample content for original file.txt" > ~/original\ file.txt
+
+# b)
+ln -s ~/original\ file.txt ~/symlink\ to\ original
+
+# c)
+ln ~/original\ file.txt ~/hardlink\ to\ original
+
+# d)
+ls -li ~/original\ file.txt ~/symlink\ to\ original ~/hardlink\ to\ original
+
+# e)
+echo "Adding a new line of content" >> ~/original\ file.txt
+
+# f)
+cat ~/symlink\ to\ original
+cat ~/hardlink\ to\ original
+
+# g)
+rm ~/original\ file.txt
+ls ~/symlink\ to\ original ~/hardlink\ to\ original
+
+Exercise 4:
+(a) Create a new directory named grep practice in your home directory. Inside
+this directory, create a text file named sample.txt with at least 50 lines of text.
+Ensure the file contains a mix of sentences, some of which include the word
+”Linux”.
+(b) Use the grep command to find all lines in sample.txt that contain the word
+”Linux”. Display the results on the terminal.
+(c) Modify the grep command to be case-insensitive and find all lines containing the
+word ”linux” in sample.txt.
+(d) Use the grep command with the -n option to display the line numbers of all
+occurrences of the word ”Linux” in sample.txt.
+(e) Use the grep command with the -v option to display all lines in sample.txt
+that do not contain the word ”Linux”.
+(f) Use the grep command with the -c option to count the number of lines in
+sample.txt that contain the word ”Linux”.
+
+solution :-
+# a)
+mkdir ~/grep\ practice
+cd ~/grep\ practice
+for i in {1..50}; do echo "This is line $i with some content about Linux." >> sample.txt; done
+
+# b)
+grep "Linux" sample.txt
+
+# c)
+grep -i "linux" sample.txt
+
+# d)
+grep -n "Linux" sample.txt
+
+# e)
+grep -v "Linux" sample.txt
+
+# f)
+grep -c "Linux" sample.txt
+
+Exercise 5:
+(a) Create a file named permissions file.txt in your home directory.
+(b) Change the file permissions of permissions file.txt to be readable, writable, and
+executable by the owner, but readable only by others. Use chmod to set these
+permissions.
+(c) Verify the permissions using ls -l.
+(d) Change the ownership of permissions file.txt to a user named newuser and a
+group named newgroup using chown.
+(e) Verify the ownership change using ls -l.
+
+# a)
+touch ~/permissions\ file.txt
+
+# b)
+chmod 751 ~/permissions\ file.txt
+
+# c)
+ls -l ~/permissions\ file.txt
+
+# d)
+chown newuser:newgroup ~/permissions\ file.txt
+
+# e)
+ls -l ~/permissions\ file.txt
